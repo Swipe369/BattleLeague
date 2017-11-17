@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 
-//U are not
+
 public class MyGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private Texture img;
