@@ -4,11 +4,11 @@ import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Spell {
-    private double cooldownTime_;
+    private int cooldownTime_;
     private int damage_;
     private Texture spellTexture_;
 
-    public double getCooldownTime() {
+    public int getCooldownTime() {
         return cooldownTime_;
     }
 
@@ -16,7 +16,7 @@ public class Spell {
         return damage_;
     }
 
-    public void setCooldownTime(double cooldownTime) {
+    public void setCooldownTime(int cooldownTime) {
         cooldownTime_ = cooldownTime;
     }
 
