@@ -49,7 +49,4 @@ public class Cell {
         emptyStatus_ = status;
     }
 
-    public void updateSprite() {
-        Gdx.input.isButtonPressed()
-    }
 }
