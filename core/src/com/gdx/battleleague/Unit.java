@@ -3,7 +3,6 @@ package com.gdx.battleleague;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public abstract class Unit {
-    protected String name_;
     protected int health_;
     protected int damage_;
     protected int moveRange_;
@@ -43,10 +42,14 @@ public abstract class Unit {
     }
 
     public void show() {
-        System.out.println("Name: " + name_ + "\n" + "Damage: " + damage_ + "\n" + "Health :" + health_ + "\n" + "Move range: " + moveRange_ + "\n" + "Attack range: " + attackRange_ + "\n");
+        System.out.println("Damage: " + damage_ + "\n" + "Health :" + health_ + "\n" + "Move range: " + moveRange_ + "\n" + "Attack range: " + attackRange_ + "\n");
     }
+    //move - перемещение по карте
+    protected void move() {}
 
-    public void move() {
+    //удар противника
+    protected void attack() {}
 
-    }
+    //функция хода
+    public void makeTurn() {}
 }

@@ -8,12 +8,12 @@ public class Cell {
     private int x_;
     private int y_;
     private boolean emptyStatus_;
-    private Sprite cellSprite_;
     private Texture cellTexture_;
+    private Sprite cellSprite_;
 
     public Cell() {
         cellTexture_ = new Texture("Клетка.png");
-        cellSprite_ = new Sprite(cellTexture_);
+        cellSprite_= new Sprite()
         x_ = 0;
         y_ = 0;
         emptyStatus_ = true;
@@ -22,7 +22,7 @@ public class Cell {
     public Cell(int x, int y) {
         x_ = x;
         y_ = y;
-        cellSprite_.setPosition(Constants.UPPER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.UPPER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);
+      //  cellTexture_.setPosition(Constants.UPPER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.UPPER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE)
     }
 
     public int getX_() {
@@ -49,4 +49,6 @@ public class Cell {
         emptyStatus_ = status;
     }
 
+    //считает расстояние до выбранной клетки
+    public int calcDistance() {}
 }

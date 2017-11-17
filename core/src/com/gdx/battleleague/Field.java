@@ -22,4 +22,11 @@ public class Field {
     public int getWidth_() {
         return WIDTH_;
     }
+
+    //возвращает 1 если клетка достижима,0 если не достижима
+    public boolean isReachable() {
+        /* вызываем метод класса Cell для расчета расстояния до выбранной клетки*/
+    }
+
+
 }

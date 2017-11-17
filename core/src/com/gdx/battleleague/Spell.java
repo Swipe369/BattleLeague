@@ -1,11 +1,12 @@
 package com.gdx.battleleague;
 
+import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Spell {
     private double cooldownTime_;
     private int damage_;
-    private Sprite spellSprite_;
+    private Texture spellTexture_;
 
     public double getCooldownTime() {
         return cooldownTime_;
@@ -23,7 +24,7 @@ public class Spell {
         damage_ = damage;
     }
 
-    public void setSpellSprite(Sprite sprite) {
+    public void setSpellTexture(Texture texture) {
 
     }
 
