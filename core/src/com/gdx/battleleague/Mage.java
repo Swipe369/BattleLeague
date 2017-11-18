@@ -9,4 +9,12 @@ public class Mage extends Unit {
         attackRange_ = 3;
         moveRange_ = 1;
     }
+
+    @Override
+    public void makeTurn(Cell currentCell, Cell destinationCell) {
+        if (destinationCell.isEmpty())
+            move(currentCell, destinationCell);
+        else 
+
+    }
 }

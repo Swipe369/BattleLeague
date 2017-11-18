@@ -24,7 +24,7 @@ public class Cell {
         x_ = x;
         y_ = y;
 
-        cellSprite_.setPosition(Constants.UPPER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.UPPER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE)
+        cellSprite_.setPosition(Constants.UPPER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.UPPER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);
     }
 
     public int getX() {
@@ -56,7 +56,10 @@ public class Cell {
     }
 
     public void setUnit(Unit unit) {
-        unit_ = unit;
+        if(unit!=null) {
+            unit_ = unit;
+            emptyStatus_ = false;
+        }
     }
 
     public Sprite getCellSprite() {
@@ -64,18 +67,22 @@ public class Cell {
     }
 
 
-    public void setCellSprite(Sprite cellSprite_) {
+    public void setCellSprite(Sprite cellSprite) {
         cellSprite_ = cellSprite;
     }
 
     //Возвращает расстояние до передаваемой клетки, включая её
     public int calcDistance(Cell cell) {
-        return abs(cell.getX() - x_) + abs(cell.getY() - y_);
+        return Math.abs(cell.getX() - x_) + Math.abs(cell.getY() - y_);
     }
 
+    public void clear() {
+        unit_=null;
+        emptyStatus_=true;
+    }
 
     public void render() {
-        Gd
+
     }
 
     public void update() {
