@@ -7,4 +7,18 @@ public class Assasin extends Unit {
         moveRange_ = 3;
         attackRange_ = 1;
     }
+    @Override
+    public void makeTurn(Cell currentCell,Cell destinationCell)
+    {
+        if (destinationCell.isEmpty())
+            move(currentCell, destinationCell);
+        else
+        {
+            Cell moveTo=new Cell(destinationCell.getX(),destinationCell.getY()-1);
+
+            move(currentCell,moveTo);
+            attack(currentCell,destinationCell);
+            move(moveTo,currentCell);
+        }
+    }
 }

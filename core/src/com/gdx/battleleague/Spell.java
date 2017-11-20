@@ -11,7 +11,8 @@ public class Spell {
 
     public Spell() {
         cooldownTime_=3;
-        damage_=5;
+        currentCooldownTime_=cooldownTime_;
+        damage_=10;
     }
     public int getCooldownTime() {
         return cooldownTime_;

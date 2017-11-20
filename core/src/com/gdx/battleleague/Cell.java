@@ -3,6 +3,9 @@ package com.gdx.battleleague;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import javax.xml.soap.Text;
 
 public class Cell {
     private int x_;                 // Номер клетки на поле по X
@@ -13,8 +16,8 @@ public class Cell {
     private Sprite cellSprite_;     // Спрайт клетки
 
     public Cell() {
-        cellTexture_ = new Texture("Клетка.png");
-        cellSprite_ = new Sprite(cellTexture_);
+       /* cellTexture_ = new Texture("Клетка.png");
+        cellSprite_ = new Sprite(cellTexture_);*/
         x_ = 0;
         y_ = 0;
         emptyStatus_ = true;
@@ -23,8 +26,11 @@ public class Cell {
     public Cell(int x, int y) {
         x_ = x;
         y_ = y;
-
-        cellSprite_.setPosition(Constants.UPPER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.UPPER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);
+        emptyStatus_ = true;
+        cellSprite_=new Sprite(new Texture("Клетка.png"));
+        /*cellTexture_ = new Texture("Клетка.png");
+        cellSprite_ = new Sprite(cellTexture_);
+        cellSprite_.setPosition(Constants.UPPER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.UPPER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);*/
     }
 
     public int getX() {
@@ -59,6 +65,8 @@ public class Cell {
         if(unit!=null) {
             unit_ = unit;
             emptyStatus_ = false;
+            unit_.setX(x_);
+            unit_.setY(y_);
         }
     }
 
@@ -71,6 +79,13 @@ public class Cell {
         cellSprite_ = cellSprite;
     }
 
+    public Texture getCellTexture() {
+        return cellTexture_;
+    }
+    public void setCellTexture(Texture texture) {
+        cellTexture_=texture;
+    }
+
     //Возвращает расстояние до передаваемой клетки, включая её
     public int calcDistance(Cell cell) {
         return Math.abs(cell.getX() - x_) + Math.abs(cell.getY() - y_);
@@ -81,8 +96,12 @@ public class Cell {
         emptyStatus_=true;
     }
 
-    public void render() {
+    public void render(SpriteBatch batch) {
+        cellTexture_ = new Texture("Клетка.png");
+        cellSprite_ = new Sprite(cellTexture_);
+        cellSprite_.setPosition(Constants.LOWER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);
 
+        //batch.draw(cellTexture_,Constants.LOWER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);
     }
 
     public void update() {

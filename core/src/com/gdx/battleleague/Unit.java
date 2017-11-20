@@ -2,14 +2,25 @@ package com.gdx.battleleague;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class Unit {
+    protected int x_;
+    protected int y_;
     protected int health_;
     protected int damage_;
     protected int moveRange_;
     protected int attackRange_;
     protected Texture unitTexture_;
     protected Sprite unitSprite_;
+
+    public int getX() {
+        return x_;
+    }
+
+    public int getY() {
+        return y_;
+    }
 
     public int getHealth() {
         return health_;
@@ -27,12 +38,20 @@ public abstract class Unit {
         return attackRange_;
     }
 
-    public Texture getUnitTexture_() {
+    public Texture getUnitTexture() {
         return unitTexture_;
     }
 
-    public Sprite getSprite_() {
+    public Sprite getUnitSprite() {
         return unitSprite_;
+    }
+
+    public void setX(int x) {
+        x_=x;
+    }
+
+    public void setY(int y) {
+        y_=y;
     }
 
     public void setHealth(int value) {
@@ -53,7 +72,7 @@ public abstract class Unit {
 
     public void setUnitTexture(Texture texture) {unitTexture_=texture;}
 
-    public void setSprite(Sprite sprite) {unitSprite_=sprite;}
+    public void setUnitSprite(Sprite sprite) {unitSprite_=sprite;}
 
     public void show() {
         System.out.println("Damage: " + damage_ + "\n" + "Health :" + health_ + "\n" + "Move range: " + moveRange_ + "\n" + "Attack range: " + attackRange_ + "\n");
@@ -69,7 +88,7 @@ public abstract class Unit {
 
     //удар противника
     protected void attack(Cell currentCell, Cell destinationCell) {
-        if (currentCell.calcDistance(destinationCell) <= attackRange_ && !destinationCell.isEmpty()) //если хватает дальности атаки и клетка занята -атакуем
+        if (currentCell.calcDistance(destinationCell) <= attackRange_ ) //если хватает дальности атаки и клетка занята -атакуем
             destinationCell.getUnit().setHealth(destinationCell.getUnit().getHealth() - currentCell.getUnit().getDamage());
         if (destinationCell.getUnit().getHealth() <= 0) //если атакуемый герой умер чистим клетку
             destinationCell.clear();
@@ -81,4 +100,11 @@ public abstract class Unit {
 
     //функция хода
     public void makeTurn(Cell currentCell,Cell destinationCell) {}
+
+    public void render(SpriteBatch batch) {
+      //  batch.draw(new Texture("Unit.png",Constants.LOWER_LEFT_FIELD_CORNER_X,Constants.LOWER_LEFT_FIELD_CORNER_Y,0,0,74,74)
+      /*  unitTexture_=new Texture("Unit.png");
+        unitSprite_=new Sprite(unitTexture_,0,0,74,74);
+        unitSprite_.setPosition(map);*/
+    }
 }

@@ -12,10 +12,8 @@ public class DesktopLauncher {
         config.title = "Drop";
         config.width = 1920;
         config.height = 1080;
-        config.fullscreen = true;
-        Unit mage = new Mage();
-        mage.show();
-        Sprite sprite = new Sprite();
+        config.fullscreen = false;
+
         new LwjglApplication(new MyGame(), config);
     }
 }
