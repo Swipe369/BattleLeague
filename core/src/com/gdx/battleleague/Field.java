@@ -103,7 +103,7 @@ public class Field {
                     cell_arr[i][j].getUnit().render(batch,Constants.LOWER_LEFT_FIELD_CORNER_X + cell_arr[i][j].getX() * Constants.CELL_SIZE,Constants.LOWER_LEFT_FIELD_CORNER_Y + cell_arr[i][j].getY() * Constants.CELL_SIZE);
 
                     if(isMoving()) {
-                        cell_arr[i][j].getUnit().update(0.1f, Constants.LOWER_LEFT_FIELD_CORNER_X + cell_arr[i][j].getX() * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + cell_arr[i][j].getY() * Constants.CELL_SIZE);
+                        checkedCell_.getUnit().update(0.05f, Constants.LOWER_LEFT_FIELD_CORNER_X + cell_arr[i][j].getX() * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + cell_arr[i][j].getY() * Constants.CELL_SIZE);
 
                     }
                 }
