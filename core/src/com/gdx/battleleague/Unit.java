@@ -1,8 +1,13 @@
 package com.gdx.battleleague;
 
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+//import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 
 public abstract class Unit {
     protected int x_;
@@ -13,6 +18,11 @@ public abstract class Unit {
     protected int attackRange_;
     protected Texture unitTexture_;
     protected Sprite unitSprite_;
+    //protected TextureRegion[] textureRegions;
+    protected TextureRegion textureRegions;
+    protected Texture texture;
+    protected Animation attackAnimation;
+
 
     public int getX() {
         return x_;
@@ -92,19 +102,21 @@ public abstract class Unit {
             destinationCell.getUnit().setHealth(destinationCell.getUnit().getHealth() - currentCell.getUnit().getDamage());
         if (destinationCell.getUnit().getHealth() <= 0) //если атакуемый герой умер чистим клетку
             destinationCell.clear();
-        if (destinationCell.getUnit() instanceof Warrior) //если в клетке куда атаковал стоит вар,то он атакует в ответ
+        if (destinationCell.getUnit() instanceof Warrior && destinationCell.calcDistance(currentCell)<= destinationCell.getUnit().getAttackRange()) //если в клетке куда атаковал стоит вар,то он атакует в ответ
             currentCell.getUnit().setHealth(currentCell.getUnit().getHealth() - destinationCell.getUnit().getDamage());
         if (currentCell.getUnit().getHealth() <= 0) //если атаковавший умер чистим клетку
             currentCell.clear();
     }
 
     //функция хода
-    public void makeTurn(Cell currentCell,Cell destinationCell) {}
+    public void makeTurn(Cell currentCell,Cell destinationCell,Cell[][] map) {}
 
-    public void render(SpriteBatch batch) {
+    public void render(SpriteBatch batch,int x,int y) {
       //  batch.draw(new Texture("Unit.png",Constants.LOWER_LEFT_FIELD_CORNER_X,Constants.LOWER_LEFT_FIELD_CORNER_Y,0,0,74,74)
       /*  unitTexture_=new Texture("Unit.png");
         unitSprite_=new Sprite(unitTexture_,0,0,74,74);
         unitSprite_.setPosition(map);*/
+      //unitSprite_.draw(batch);
     }
+    public abstract void update(float dt , int x, int y) ;
 }

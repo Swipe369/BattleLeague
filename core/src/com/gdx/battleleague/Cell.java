@@ -16,21 +16,17 @@ public class Cell {
     private Sprite cellSprite_;     // Спрайт клетки
 
     public Cell() {
-       /* cellTexture_ = new Texture("Клетка.png");
-        cellSprite_ = new Sprite(cellTexture_);*/
         x_ = 0;
         y_ = 0;
         emptyStatus_ = true;
+        cellSprite_ = new Sprite(new Texture("Клетка.png"));
     }
 
     public Cell(int x, int y) {
         x_ = x;
         y_ = y;
         emptyStatus_ = true;
-        cellSprite_=new Sprite(new Texture("Клетка.png"));
-        /*cellTexture_ = new Texture("Клетка.png");
-        cellSprite_ = new Sprite(cellTexture_);
-        cellSprite_.setPosition(Constants.UPPER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.UPPER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);*/
+        cellSprite_ = new Sprite(new Texture("Клетка.png"));
     }
 
     public int getX() {
@@ -62,7 +58,7 @@ public class Cell {
     }
 
     public void setUnit(Unit unit) {
-        if(unit!=null) {
+        if (unit != null) {
             unit_ = unit;
             emptyStatus_ = false;
             unit_.setX(x_);
@@ -82,8 +78,9 @@ public class Cell {
     public Texture getCellTexture() {
         return cellTexture_;
     }
+
     public void setCellTexture(Texture texture) {
-        cellTexture_=texture;
+        cellTexture_ = texture;
     }
 
     //Возвращает расстояние до передаваемой клетки, включая её
@@ -92,8 +89,8 @@ public class Cell {
     }
 
     public void clear() {
-        unit_=null;
-        emptyStatus_=true;
+        unit_ = null;
+        emptyStatus_ = true;
     }
 
     public void render(SpriteBatch batch) {

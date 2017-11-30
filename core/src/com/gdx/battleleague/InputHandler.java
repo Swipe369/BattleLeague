@@ -9,9 +9,8 @@ public class InputHandler {
     public static boolean isClicked() {
         return Gdx.input.justTouched();
     }
-
     public static boolean isClickedA() {
-        return Gdx.input.isKeyPressed(A);
+        return Gdx.input.isKeyPressed(ANY_KEY);
     }
     public static boolean isPressed() {
         return Gdx.input.isTouched();

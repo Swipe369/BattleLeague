@@ -12,7 +12,7 @@ public class Mage extends Unit {
         moveRange_ = 1;
         attackRange_ = 3;
         unitTexture_=new Texture("Unit.png");
-        unitSprite_=new Sprite(unitTexture_,74,0,Constants.UNIT_SPRITE_SIZE,Constants.UNIT_SPRITE_SIZE);
+        unitSprite_=new Sprite(unitTexture_,74,0,Constants.UNIT_SPRITE_WIDTH,Constants.UNIT_SPRITE_HEIGHT);
     }
 
     public Spell getSpell() {
@@ -28,7 +28,7 @@ public class Mage extends Unit {
     }
 
     @Override
-    public void makeTurn(Cell currentCell, Cell destinationCell) {
+    public void makeTurn(Cell currentCell, Cell destinationCell,Cell[][] map) {
         if (destinationCell.isEmpty())
             move(currentCell, destinationCell);
         else
@@ -42,5 +42,10 @@ public class Mage extends Unit {
                 attack(currentCell,destinationCell);
                 spell_.setCurrentCooldownTime_(spell_.getCurrentCooldownTime()-1);
             }
+    }
+    @Override
+    public void update(float dt, int x, int y)
+    {
+       // attackAnimation.update(dt);
     }
 }

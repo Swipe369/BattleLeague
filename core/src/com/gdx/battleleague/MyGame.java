@@ -19,18 +19,21 @@ import com.badlogic.gdx.math.MathUtils;
 public class MyGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private Texture img;
+    private BitmapFont font;
     private Field map;
-    private Warrior war;
-    private Warrior mage;
+    private Warrior warrior;
+    private Warrior warrior1;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
         map=new Field();
-        war=new Warrior();
-        mage=new Warrior();
-        map.getField()[1][2].setUnit(war);
-        map.getField()[4][4].setUnit(mage);
+        font=new BitmapFont();
+        warrior=new Warrior();
+        warrior1=new Warrior();
+        map.getField()[1][2].setUnit(warrior);
+        map.getField()[4][4].setUnit(warrior1);
+
     }
 
     @Override
