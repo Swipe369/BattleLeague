@@ -31,7 +31,7 @@ public class Warrior extends Unit {
         return attackAnimation.getKeyFrame(1);
     }*/
     @Override
-    public void makeTurn(Cell currentCell,Cell destinationCell,Cell[][] map)
+    public void makeTurn(final Cell currentCell,final Cell destinationCell,final Cell[][] map)
     {
         if (destinationCell.isEmpty())
             move(currentCell, destinationCell);
@@ -48,11 +48,11 @@ public class Warrior extends Unit {
         healthSprite_.draw(batch);
         healthSprite_.setSize(25,25);
         healthSprite_.setPosition(x,y+Constants.CELL_SIZE-25);
-        font.draw(batch,""+InputHandler.calcXpx()+"\n",x+25,y+Constants.CELL_SIZE-5);
+        font.draw(batch,""+health_,x+25,y+Constants.CELL_SIZE-5);
         damageSprite_.draw(batch);
         damageSprite_.setSize(25,25);
         damageSprite_.setPosition(x+40,y+Constants.CELL_SIZE-25);
-        font.draw(batch,""+InputHandler.calcYpx(),x+65,y+Constants.CELL_SIZE-5);
+        font.draw(batch,""+damage_,x+65,y+Constants.CELL_SIZE-5);
 
     }
 

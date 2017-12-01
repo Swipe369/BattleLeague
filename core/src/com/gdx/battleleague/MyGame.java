@@ -31,7 +31,7 @@ public class MyGame extends ApplicationAdapter {
         font=new BitmapFont();
         warrior=new Warrior();
         warrior1=new Assasin();
-        map.getField()[1][2].setUnit(warrior);
+        map.getField()[0][0].setUnit(warrior);
         map.getField()[4][4].setUnit(warrior1);
 
     }

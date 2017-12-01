@@ -38,7 +38,7 @@ public class Cell {
         return y_;
     }
 
-    public void setX_(int x) {
+    public void setX(int x) {
         x_ = x;
     }
 
