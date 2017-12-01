@@ -21,7 +21,7 @@ public class Shooter extends Unit {
             attack(currentCell,destinationCell);
     }
     @Override
-    public void update(float dt, int x, int y)
+    public void update(float dt)
     {
         //attackAnimation.update(dt);
     }

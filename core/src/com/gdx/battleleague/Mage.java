@@ -44,7 +44,7 @@ public class Mage extends Unit {
             }
     }
     @Override
-    public void update(float dt, int x, int y)
+    public void update(float dt)
     {
        // attackAnimation.update(dt);
     }

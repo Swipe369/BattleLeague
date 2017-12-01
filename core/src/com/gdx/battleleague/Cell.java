@@ -2,6 +2,7 @@ package com.gdx.battleleague;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -98,7 +99,7 @@ public class Cell {
         cellSprite_ = new Sprite(cellTexture_);
         cellSprite_.setPosition(Constants.LOWER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);
 
-        //batch.draw(cellTexture_,Constants.LOWER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);
+        batch.draw(cellTexture_,Constants.LOWER_LEFT_FIELD_CORNER_X + x_ * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + y_ * Constants.CELL_SIZE);
     }
 
     public void update() {

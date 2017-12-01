@@ -3,6 +3,7 @@ package com.gdx.battleleague;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 //import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,9 +19,13 @@ public abstract class Unit {
     protected int attackRange_;
     protected Texture unitTexture_;
     protected Sprite unitSprite_;
-    //protected TextureRegion[] textureRegions;
+    protected BitmapFont font;
     protected TextureRegion textureRegions;
-    protected Texture texture;
+    protected Texture healthTexture_;
+    protected Sprite healthSprite_;
+    protected Texture damageTexture_;
+    protected Sprite damageSprite_;
+    protected Animation moveAnimation;
     protected Animation attackAnimation;
 
 
@@ -84,10 +89,6 @@ public abstract class Unit {
 
     public void setUnitSprite(Sprite sprite) {unitSprite_=sprite;}
 
-    public void show() {
-        System.out.println("Damage: " + damage_ + "\n" + "Health :" + health_ + "\n" + "Move range: " + moveRange_ + "\n" + "Attack range: " + attackRange_ + "\n");
-    }
-
     //move - перемещение по карте
     protected void move(Cell currentCell, Cell destinationCell) {
         if (currentCell.calcDistance(destinationCell) <= moveRange_ && destinationCell.isEmpty()) {
@@ -102,7 +103,7 @@ public abstract class Unit {
             destinationCell.getUnit().setHealth(destinationCell.getUnit().getHealth() - currentCell.getUnit().getDamage());
         if (destinationCell.getUnit().getHealth() <= 0) //если атакуемый герой умер чистим клетку
             destinationCell.clear();
-        if (destinationCell.getUnit() instanceof Warrior && destinationCell.calcDistance(currentCell)<= destinationCell.getUnit().getAttackRange()) //если в клетке куда атаковал стоит вар,то он атакует в ответ
+        if (destinationCell.getUnit() instanceof Warrior && !(currentCell.getUnit() instanceof Assasin) && destinationCell.calcDistance(currentCell)<= destinationCell.getUnit().getAttackRange()) //если в клетке куда атаковал стоит вар,то он атакует в ответ
             currentCell.getUnit().setHealth(currentCell.getUnit().getHealth() - destinationCell.getUnit().getDamage());
         if (currentCell.getUnit().getHealth() <= 0) //если атаковавший умер чистим клетку
             currentCell.clear();
@@ -118,5 +119,5 @@ public abstract class Unit {
         unitSprite_.setPosition(map);*/
       //unitSprite_.draw(batch);
     }
-    public abstract void update(float dt , int x, int y) ;
+    public abstract void update(float dt) ;
 }

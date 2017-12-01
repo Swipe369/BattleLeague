@@ -1,7 +1,5 @@
 package com.gdx.battleleague;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -99,15 +97,11 @@ public class Field {
             for (int j = 0; j < HEIGHT_; j++) {
                 batch.draw(cell_arr[i][j].getCellSprite(), Constants.LOWER_LEFT_FIELD_CORNER_X + cell_arr[i][j].getX() * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + cell_arr[i][j].getY() * Constants.CELL_SIZE);
                 if (!cell_arr[i][j].isEmpty()) {
-                    //batch.draw(cell_arr[i][j].getUnit().getUnitSprite(), Constants.LOWER_LEFT_FIELD_CORNER_X + cell_arr[i][j].getX() * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + cell_arr[i][j].getY() * Constants.CELL_SIZE);
-                    cell_arr[i][j].getUnit().render(batch,Constants.LOWER_LEFT_FIELD_CORNER_X + cell_arr[i][j].getX() * Constants.CELL_SIZE,Constants.LOWER_LEFT_FIELD_CORNER_Y + cell_arr[i][j].getY() * Constants.CELL_SIZE);
-
-                    if(isMoving()) {
-                        checkedCell_.getUnit().update(0.05f, Constants.LOWER_LEFT_FIELD_CORNER_X + cell_arr[i][j].getX() * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + cell_arr[i][j].getY() * Constants.CELL_SIZE);
-
-                    }
+                    cell_arr[i][j].getUnit().render(batch, Constants.LOWER_LEFT_FIELD_CORNER_X + cell_arr[i][j].getX() * Constants.CELL_SIZE, Constants.LOWER_LEFT_FIELD_CORNER_Y + cell_arr[i][j].getY() * Constants.CELL_SIZE);
+                    if (isMoving())
+                        checkedCell_.getUnit().update(0.025f);
                 }
-        }
+            }
     }
 
     public void update() {
@@ -120,15 +114,14 @@ public class Field {
                     cell_arr[InputHandler.calcX()][InputHandler.calcY()].setCellSprite(new Sprite(new Texture("Клетка1.png")));
                 }
             }
-            else if (isMoving())
-                {
-
-                    getCheckedCell().getUnit().makeTurn(cell_arr[getCheckedCell().getX()][getCheckedCell().getY()], cell_arr[InputHandler.calcX()][InputHandler.calcY()], getField());
-
-                    cancelMove();
+            else if (isMoving()) {
+                    if (getCheckedCell()==cell_arr[InputHandler.calcX()][InputHandler.calcY()])
+                        cancelMove();
+                    else {
+                        getCheckedCell().getUnit().makeTurn(cell_arr[getCheckedCell().getX()][getCheckedCell().getY()], cell_arr[InputHandler.calcX()][InputHandler.calcY()], getField());
+                        cancelMove();
+                    }
                 }
-
-
         }
     }
 }

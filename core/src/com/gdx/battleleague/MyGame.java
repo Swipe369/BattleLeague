@@ -22,7 +22,7 @@ public class MyGame extends ApplicationAdapter {
     private BitmapFont font;
     private Field map;
     private Warrior warrior;
-    private Warrior warrior1;
+    private Assasin warrior1;
 
     @Override
     public void create() {
@@ -30,7 +30,7 @@ public class MyGame extends ApplicationAdapter {
         map=new Field();
         font=new BitmapFont();
         warrior=new Warrior();
-        warrior1=new Warrior();
+        warrior1=new Assasin();
         map.getField()[1][2].setUnit(warrior);
         map.getField()[4][4].setUnit(warrior1);
 

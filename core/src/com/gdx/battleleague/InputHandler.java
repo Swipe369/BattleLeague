@@ -1,6 +1,7 @@
 package com.gdx.battleleague;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 
 import static com.badlogic.gdx.Input.Keys.*;
@@ -21,4 +22,6 @@ public class InputHandler {
 
     public static int calcX() {return (int)((InputHandler.getMousePosition().x-Constants.LOWER_LEFT_FIELD_CORNER_X)/Constants.CELL_SIZE);}
     public static int calcY() {return (int)(Gdx.graphics.getHeight()-InputHandler.getMousePosition().y-Constants.LOWER_LEFT_FIELD_CORNER_Y)/Constants.CELL_SIZE;}
+    public static int calcXpx() {return (int)((InputHandler.getMousePosition().x-Constants.LOWER_LEFT_FIELD_CORNER_X));}
+    public static int calcYpx() {return (int)(Gdx.graphics.getHeight()-InputHandler.getMousePosition().y-Constants.LOWER_LEFT_FIELD_CORNER_Y);}
 }
