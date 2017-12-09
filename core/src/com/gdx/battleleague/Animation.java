@@ -15,7 +15,7 @@ public class Animation {
     public Animation(TextureRegion region, int frameCount, float cycleTime) {
         frames = new Array<TextureRegion>();
 
-        //Разделяем текстуру на ригионы и добавляем в массив
+        //Разделяем текстуру на регионы и добавляем в массив
         int frameWidth = region.getRegionWidth() / frameCount;
         for (int i = 0; i < frameCount; i++)
             frames.add(new TextureRegion(region, i*frameWidth, 0, frameWidth, region.getRegionHeight()));

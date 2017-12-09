@@ -62,11 +62,11 @@ public abstract class Unit {
     }
 
     public void setX(int x) {
-        x_=x;
+        x_ = x;
     }
 
     public void setY(int y) {
-        y_=y;
+        y_ = y;
     }
 
     public void setHealth(int value) {
@@ -85,13 +85,17 @@ public abstract class Unit {
         attackRange_ = value;
     }
 
-    public void setUnitTexture(Texture texture) {unitTexture_=texture;}
+    public void setUnitTexture(Texture texture) {
+        unitTexture_ = texture;
+    }
 
-    public void setUnitSprite(Sprite sprite) {unitSprite_=sprite;}
+    public void setUnitSprite(Sprite sprite) {
+        unitSprite_ = sprite;
+    }
 
     //move - перемещение по карте
     protected void move(Cell currentCell, Cell destinationCell) {
-        if (currentCell.calcDistance(destinationCell) <= moveRange_ && destinationCell.isEmpty()&&destinationCell.getX()>=0&&destinationCell.getY()>=0) {
+        if (currentCell.calcDistance(destinationCell) <= moveRange_ && destinationCell.isEmpty() && destinationCell.getX() >= 0 && destinationCell.getY() >= 0) {
             destinationCell.setUnit(currentCell.getUnit());
             currentCell.clear();
         }
@@ -100,27 +104,30 @@ public abstract class Unit {
     //удар противника
     protected void attack(Cell currentCell, Cell destinationCell) {
 
-            if (currentCell.calcDistance(destinationCell) <= attackRange_) //если хватает дальности атаки и клетка занята -атакуем
-                destinationCell.getUnit().setHealth(destinationCell.getUnit().getHealth() - currentCell.getUnit().getDamage());
-            if (destinationCell.getUnit().getHealth() <= 0) //если атакуемый герой умер чистим клетку
-                destinationCell.clear();
-            if (destinationCell.getUnit() instanceof Warrior && !(currentCell.getUnit() instanceof Assasin) && destinationCell.calcDistance(currentCell) <= destinationCell.getUnit().getAttackRange()) //если в клетке куда атаковал стоит вар,то он атакует в ответ
-            {
-                currentCell.getUnit().setHealth(currentCell.getUnit().getHealth() - destinationCell.getUnit().getDamage());
-                if (currentCell.getUnit().getHealth() <= 0) //если атаковавший умер чистим клетку
-                    currentCell.clear();
-            }
+        if (currentCell.calcDistance(destinationCell) <= attackRange_) //если хватает дальности атаки и клетка занята -атакуем
+            destinationCell.getUnit().setHealth(destinationCell.getUnit().getHealth() - currentCell.getUnit().getDamage());
+        if (destinationCell.getUnit().getHealth() <= 0) //если атакуемый герой умер чистим клетку
+            destinationCell.clear();
+        if (destinationCell.getUnit() instanceof Warrior && !(currentCell.getUnit() instanceof Assasin) && destinationCell.calcDistance(currentCell)
+                <= destinationCell.getUnit().getAttackRange()) //если в клетке куда атаковал стоит вар,то он атакует в ответ
+        {
+            currentCell.getUnit().setHealth(currentCell.getUnit().getHealth() - destinationCell.getUnit().getDamage());
+            if (currentCell.getUnit().getHealth() <= 0) //если атаковавший умер чистим клетку
+                currentCell.clear();
         }
+    }
 
     //функция хода
-    public void makeTurn(final Cell currentCell,final Cell destinationCell,final Cell[][] map) {}
+    public void makeTurn(final Cell currentCell, final Cell destinationCell, final Cell[][] map) {
+    }
 
-    public void render(SpriteBatch batch,int x,int y) {
-      //  batch.draw(new Texture("Unit.png",Constants.LOWER_LEFT_FIELD_CORNER_X,Constants.LOWER_LEFT_FIELD_CORNER_Y,0,0,74,74)
+    public void render(SpriteBatch batch, int x, int y) {
+        //  batch.draw(new Texture("Unit.png",Constants.LOWER_LEFT_FIELD_CORNER_X,Constants.LOWER_LEFT_FIELD_CORNER_Y,0,0,74,74)
       /*  unitTexture_=new Texture("Unit.png");
         unitSprite_=new Sprite(unitTexture_,0,0,74,74);
         unitSprite_.setPosition(map);*/
-      //unitSprite_.draw(batch);
+        //unitSprite_.draw(batch);
     }
-    public abstract void update(float dt) ;
+
+    public abstract void update(float dt);
 }

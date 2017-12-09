@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.sun.deploy.util.Waiter;
 
 
 public class MyGame extends ApplicationAdapter {
@@ -22,7 +23,8 @@ public class MyGame extends ApplicationAdapter {
     private BitmapFont font;
     private Field map;
     private Warrior warrior;
-    private Assasin warrior1;
+    private Warrior warrior1;
+    private Shooter shooter;
 
     @Override
     public void create() {
@@ -30,7 +32,8 @@ public class MyGame extends ApplicationAdapter {
         map=new Field();
         font=new BitmapFont();
         warrior=new Warrior();
-        warrior1=new Assasin();
+        warrior1=new Warrior();
+        shooter = new Shooter();
         map.getField()[0][0].setUnit(warrior);
         map.getField()[4][4].setUnit(warrior1);
 
